@@ -1,23 +1,347 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>Home</title>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <!--
-      Need a visual blank slate?
-      Remove all code in `styles.css`!
-    -->
-    <link rel="stylesheet" href="styles.css" />
-    <script type="module" src="script.js"></script>
-  </head>
-  <body>
-    <nav>
-      <a href="/" aria-current="page">Home</a>
-      <a href="/page2.html">Other page</a>
-    </nav>
-    <main>
-      <h1>Home page</h1>
-    </main>
-  </body>
-</html>
+
+
+    <!-- Schema.org 구조화 데이터 -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "HomeAndConstructionBusiness",
+      "name": "속초인테리어센터",
+      "description": "속초시 전 지역(조양동, 교동, 동명동, 금호동 등) 아파트, 빌라, 원룸, 투룸, 상가 인테리어 및 리모델링 전문 서비스",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "강원특별자치도 속초시 XXX로 XX",
+        "addressLocality": "속초시",
+        "addressRegion": "강원특별자치도",
+        "postalCode": "248XX",
+        "addressCountry": "KR"
+      },
+      "telephone": "033-XXX-XXXX",
+      "url": "https://www.example.com/sokcho-interior",
+      "openingHours": "Mo-Su 09:00-18:00",
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "인테리어 서비스",
+        "itemListElement": [
+          {"@type":"Offer","itemOffered":{"@type":"Service","name":"속초 아파트 인테리어"}},
+          {"@type":"Offer","itemOffered":{"@type":"Service","name":"속초 빌라·주택 리모델링"}},
+          {"@type":"Offer","itemOffered":{"@type":"Service","name":"속초 원룸·투룸 인테리어"}},
+          {"@type":"Offer","itemOffered":{"@type":"Service","name":"속초 상가·사무실 인테리어"}},
+          {"@type":"Offer","itemOffered":{"@type":"Service","name":"부분 인테리어 (주방/욕실)"}},
+          {"@type":"Offer","itemOffered":{"@type":"Service","name":"인테리어 시공 및 디자인 컨설팅"}}
+        ]
+      }
+    }
+    </script>
+
+    <link rel="canonical" href="https://www.example.com/sokcho-interior">
+
+    <!-- 디자인 및 레이아웃을 위한 CSS 스타일 -->
+    <style>
+      :root {
+        --primary-color: #3f51b5; /* Soft Blue */
+        --accent-color: #ff9800; /* Warm Orange */
+        --light-background: #f8f9fa;
+        --text-color: #333;
+        --border-color: #e0e0e0;
+      }
+
+      body { font-family: 'Malgun Gothic', sans-serif; margin:0;padding:0; color:var(--text-color); line-height:1.7; background-color: #fff; }
+      header { background-color: var(--primary-color); color:#fff; padding: 20px 15px; text-align:center; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+      header h1 { font-size: 2.5em; margin-bottom: 5px; }
+      header p { font-size: 1.1em; opacity: 0.9; }
+      nav { background-color: #fff; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+      nav ul { max-width: 1000px; margin: 0 auto; padding: 15px; list-style:none; display:flex; gap: 20px; justify-content: space-around; }
+      nav a { text-decoration:none; color: var(--text-color); font-weight: bold; font-size: 1em; padding: 5px 10px; border-radius: 4px; transition: color 0.3s; }
+      nav a:hover { color: var(--primary-color); }
+
+      section { max-width: 1000px; margin: 40px auto; padding: 0 15px; background-color: #fff; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+      h2 { color: var(--primary-color); border-bottom: 2px solid var(--accent-color); padding-bottom: 10px; font-size: 2em; margin-top: 30px; }
+      h3 { color: #555; font-size: 1.5em; margin-top: 25px; }
+
+      /* CTA Button */
+      .cta-btn { display:inline-block; background:var(--primary-color);color:#fff;padding:15px 30px;border-radius:30px;text-decoration:none;font-size:1.1em; font-weight:bold; transition:all .3s ease; border:none; cursor: pointer; }
+      .cta-btn:hover { background:var(--accent-color); transform: translateY(-2px); box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
+
+      /* Content Layouts */
+      .service-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; margin-top: 20px; }
+      .service-box { background-color: var(--light-background); padding: 25px; border-radius: 10px; border-top: 5px solid var(--primary-color); box-shadow: 0 2px 8px rgba(0,0,0,0.05); transition: transform 0.3s; }
+      .service-box:hover { transform: translateY(-5px); box-shadow: 0 6px 15px rgba(0,0,0,0.1); }
+
+      /* Information Cards */
+      .info-card { background-color: #f1f3f5; padding: 20px; border-radius: 8px; margin-top: 20px; font-size: 0.95em; line-height: 1.6; border: 1px solid var(--border-color); }
+      .info-card strong { color: var(--accent-color); }
+
+      /* Keyword List styling */
+      .keyword-links { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 15px; }
+      .keyword-links a { display: inline-block; padding: 8px 15px; background-color: #e0f2f1; color: #00796b; border-radius: 20px; text-decoration: none; font-size: 0.9em; transition: background-color 0.3s; }
+      .keyword-links a:hover { background-color: #c8e6c9; }
+
+      /* Tables for cost/comparison */
+      table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+      th, td { border: 1px solid #ddd; padding: 12px; text-align: left; }
+      th { background-color: var(--primary-color); color: #fff; font-weight: bold; }
+      tr:nth-child(even) { background-color: #f9f9f9; }
+
+      /* FAQ style */
+      .faq-item { margin-bottom: 20px; border-bottom: 1px dashed #ddd; padding-bottom: 15px; }
+      .faq-item h3 { color: #333; cursor: pointer; position: relative; padding-right: 30px; }
+      .faq-item h3:after { content: '+'; position: absolute; right: 0; top: 0; font-size: 1.2em; transition: transform 0.3s; }
+      .faq-item input[type="checkbox"] { display: none; }
+      .faq-item input[type="checkbox"]:checked + h3:after { content: '-'; }
+      .faq-item input[type="checkbox"]:checked ~ p { display: block; }
+      .faq-item p { display: none; padding-left: 20px; }
+
+      /* Contact Form */
+      form label { display: block; margin-top: 10px; font-weight: bold; color: #555; }
+      form input[type="text"], form input[type="tel"], form textarea { width: calc(100% - 20px); padding: 10px; margin-top: 5px; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box; }
+      form textarea { resize: vertical; }
+
+      /* Footer */
+      footer { background-color: #333; color: #fff; text-align: center; padding: 30px; margin-top: 40px; }
+      footer p { margin: 5px 0; font-size: 0.9em; }
+
+      /* Local Keyword Section */
+      .local-keywords { background-color: var(--light-background); padding: 25px; border-radius: 8px; margin-bottom: 20px; }
+      .local-keywords ul { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: 10px; }
+      .local-keywords li { background-color: #fff; border: 1px solid var(--border-color); padding: 8px 12px; border-radius: 20px; font-size: 0.9em; }
+
+      /* Responsive adjustments */
+      @media (max-width: 768px) {
+        header h1 { font-size: 2em; }
+        nav ul { flex-direction: column; align-items: center; }
+        section { padding: 0 10px; }
+        .service-grid { grid-template-columns: 1fr; }
+        .cta-btn { font-size: 1em; padding: 12px 25px; }
+      }
+    </style>
+</head>
+<body>
+
+    <!-- 헤더 및 내비게이션 -->
+    <header>
+        <h1>속초 인테리어 전문: 아파트, 원룸, 상가 리모델링 맞춤 견적</h1>
+        <p>속초시 <strong>아파트 인테리어</strong>, <strong>원룸 리모델링</strong>, <strong>상가 인테리어</strong> 전문. 2026년 최신 트렌드 반영, 합리적인 견적 및 꼼꼼한 시공으로 고객 만족 1위!</p>
+        <nav>
+            <ul>
+                <li><a href="#about">인테리어 장점</a></li>
+                <li><a href="#services">주요 서비스</a></li>
+                <li><a href="#pricing">비용 및 견적</a></li>
+                <li><a href="#faq">FAQ</a></li>
+                <li><a href="#contact">상담 신청</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- 인트로 및 속초 지역 특화 정보 -->
+    <section id="about">
+        <h2>속초 인테리어, 왜 지역 전문가에게 맡겨야 할까요?</h2>
+        <p>속초시는 해안가에 인접해 있어 일반 내륙 지역과는 다른 기후 및 환경적 특성을 가지고 있습니다. 특히 높은 습도와 염분은 건축 자재의 수명에 직접적인 영향을 미치며, 곰팡이와 부식 문제 발생률을 높입니다. 따라서 속초 인테리어 시공 경험이 없는 업체에 맡길 경우 예상치 못한 하자가 발생할 위험이 높습니다. 저희 속초 인테리어 전문 업체는 이러한 지역 특성을 깊이 이해하고, 습기에 강한 자재 선택과 시공 노하우를 통해 하자를 최소화합니다.</p>
+        
+        <div class="info-card">
+            <h3>속초 지역 인테리어 시공의 핵심 장점</h3>
+            <ul>
+                <li><strong>습도 및 염분에 강한 자재 사용:</strong> 곰팡이 방지 페인트, 방수 성능이 강화된 타일 및 실링재 사용으로 쾌적한 실내 환경 유지.</li>
+                <li><strong>현지 네트워크 활용:</strong> 속초 지역 내 우수 자재 공급처 및 숙련된 전문 시공 인력 확보.</li>
+                <li><strong>철저한 사후 관리:</strong> 시공 후에도 속초 지역 기반으로 빠른 AS 대응 가능.</li>
+            </ul>
+        </div>
+
+        <h3>속초시 인테리어 자동완성 및 연관 키워드 분석</h3>
+        <p>고객님들이 "속초인테리어"를 검색하실 때 함께 찾는 주요 키워드들입니다. 저희는 이러한 검색 의도를 충족시키기 위해 모든 정보를 투명하게 제공합니다.</p>
+        <div class="keyword-links">
+            <a href="#pricing">속초 아파트 인테리어 비용</a>
+            <a href="#recommend">속초 인테리어 추천 업체</a>
+            <a href="#review">속초 인테리어 내돈내산 후기</a>
+            <a href="#service-oneday">속초 부분 인테리어</a>
+            <a href="#pricing">속초 인테리어 가격 비교</a>
+            <a href="#service-commercial">속초 상가 인테리어</a>
+            <a href="#service-room">속초 원룸 리모델링</a>
+            <a href="#compare">속초 인테리어 업체 순위</a>
+        </div>
+    </section>
+
+    <!-- 서비스 섹션 -->
+    <section id="services">
+        <h2>주요 인테리어 서비스 소개</h2>
+        <div class="service-grid">
+            <div class="service-box" id="service-apt">
+                <h3>속초 아파트 전체 인테리어</h3>
+                <p>속초시 조양동, 교동, 동명동 등 대단지 아파트 리모델링 전문. 20평대, 30평대, 40평대 아파트에 맞춘 맞춤형 디자인과 평면 구성 제안.</p>
+                <a href="#contact" class="cta-btn">아파트 견적 상담</a>
+            </div>
+            <div class="service-box" id="service-room">
+                <h3>속초 원룸·투룸 인테리어</h3>
+                <p>1인 가구 또는 신혼부부에게 적합한 공간 효율성 극대화 리모델링. 작은 공간도 넓어 보이게 하는 트렌디한 디자인 제안.</p>
+                <a href="#contact" class="cta-btn">원룸 견적 상담</a>
+            </div>
+            <div class="service-box" id="service-commercial">
+                <h3>속초 상가·사무실 인테리어</h3>
+                <p>방문 고객의 동선을 고려한 효율적인 상업 공간 인테리어. 카페, 식당, 미용실 등 업종별 맞춤 디자인으로 매출 상승을 돕습니다.</p>
+                <a href="#contact" class="cta-btn">상가 견적 상담</a>
+            </div>
+            <div class="service-box" id="service-partial">
+                <h3>부분 인테리어 (주방/욕실)</h3>
+                <p>가장 많이 시공하는 주방과 욕실 리모델링. 2026년 최신 트렌드를 반영한 타일, 수전, 싱크대 교체 등 부분 시공도 전문가에게 맡기세요.</p>
+                <a href="#contact" class="cta-btn">부분 시공 문의</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 비용 및 견적 섹션 -->
+    <section id="pricing">
+        <h2>속초 인테리어 비용: 평균 견적 및 가격 비교 분석 (2026년 기준)</h2>
+        <p>인테리어 비용은 시공 범위, 자재 등급, 면적에 따라 크게 달라집니다. 저희는 <strong>저렴한곳</strong>을 찾으시는 고객님들을 위해 합리적인 견적을 제시하며, 투명한 <strong>가격</strong> 공개를 원칙으로 합니다. 다음 표는 2026년 속초 지역 인테리어 <strong>예상 비용</strong>을 유형별로 정리한 것입니다. 이는 <strong>평균</strong>적인 수치이며, 정확한 <strong>견적</strong>은 현장 방문 후 산정됩니다.</p>
+        
+        <div class="info-card">
+            <h3>인테리어 비용을 결정하는 주요 요소</h3>
+            <ul>
+                <li><strong>면적(평수):</strong> 평수가 클수록 전체 금액은 증가하지만 평당 단가는 감소합니다.</li>
+                <li><strong>시공 범위:</strong> 전체 리모델링(철거 포함)이 부분 시공보다 훨씬 비쌉니다.</li>
+                <li><strong>자재 등급:</strong> 벽지, 바닥재(마루/타일), 주방가구(싱크대), 욕실 자재(도기/수전) 등의 선택에 따라 비용이 천차만별입니다.</li>
+                <li><strong>디자인 난이도:</strong> 맞춤 가구 제작, 특수 조명 설치 등 복잡한 디자인일수록 인건비가 상승합니다.</li>
+            </ul>
+        </div>
+
+        <h3>속초시 인테리어 예상 비용표 (2026년)</h3>
+        <table>
+            <tr><th>서비스 유형</th><th>면적 (평)</th><th>예상 비용대 (원)</th><th>주요 시공 내용</th></tr>
+            <tr><td>아파트 전체 인테리어</td><td>20평대</td><td>1,800만 ~ 2,500만</td><td>바닥, 벽체, 도어, 주방, 욕실, 조명 전체 교체</td></tr>
+            <tr><td>아파트 전체 인테리어</td><td>30평대</td><td>2,500만 ~ 3,500만</td><td>3~4인 가구 기준, 확장 및 단열 시공 포함</td></tr>
+            <tr><td>원룸 인테리어</td><td>10~15평</td><td>500만 ~ 1,000만</td><td>가구 배치 최적화, 도배/장판, 싱크대 교체 등</td></tr>
+            <tr><td>주방 부분 인테리어</td><td>-</td><td>400만 ~ 700만</td><td>싱크대, 상판, 타일, 수전 교체 및 조명 시공</td></tr>
+            <tr><td>욕실 부분 인테리어</td><td>-</td><td>250만 ~ 400만</td><td>바닥/벽 타일, 도기, 수전, 천장 교체 시공</td></tr>
+        </table>
+        <p>※ 상기 가격은 <strong>평균</strong>적인 견적이며, 현장 상황과 자재 선택에 따라 최종 금액은 달라질 수 있습니다. 정확한 견적은 무료 상담을 통해 받아보세요.</p>
+
+        <h3>속초 아파트 인테리어 장단점 및 비교 분석</h3>
+        <p id="compare">속초시에서 인테리어 시공을 할 때, <strong>내돈내산</strong> 후기를 살펴보면 시공업체 선정에 대한 고민이 많습니다. <strong>저렴한곳</strong>만 찾다가는 하자 보수에서 <strong>단점</strong>을 겪을 수 있고, 비싼 곳만 고집하면 <strong>장점</strong>이 적을 수 있습니다. 저희는 합리적인 <strong>가격</strong>으로 최대의 만족도를 드리는 것이 목표입니다.</p>
+
+        <h4>A. 대형 프랜차이즈 인테리어 업체와 지역 전문업체 <strong>차이점</strong> 비교</h4>
+        <table>
+            <tr><th>구분</th><th>대형 프랜차이즈</th><th>속초 지역 전문업체 (당사)</th></tr>
+            <tr><td><strong>장점</strong></td><td>체계적인 시스템, 브랜드 신뢰도</td><td>지역 환경 이해도 높음, 유연한 디자인, 빠른 AS</td></tr>
+            <tr><td><strong>단점</strong></td><td>비싼 <strong>가격</strong>, 획일적인 디자인, 현장 상황 반영 미흡</td><td>(상대적으로) 브랜드 인지도는 낮으나 전문성 높음</td></tr>
+            <tr><td><strong>추천 대상</strong></td><td>디자인보다는 브랜드 안정성을 최우선하는 고객</td><td>실제 거주 환경에 최적화된 맞춤형 시공을 원하는 고객</td></tr>
+        </table>
+    </section>
+
+    <!-- 속초 지역 상세 키워드 섹션 -->
+    <section>
+        <h2>속초시 상세 지역별 인테리어 시공 키워드 (30개 이상)</h2>
+        <p>저희 업체는 속초시의 모든 행정구역 및 주요 아파트 단지, 주거 지역의 시공 경험을 보유하고 있습니다. 특히 <strong>조양동</strong>, <strong>교동</strong>, <strong>동명동</strong>, <strong>금호동</strong>, <strong>청학동</strong>, <strong>대포동</strong> 등 인구 밀집 지역의 아파트 및 빌라 인테리어 시공에 특화되어 있습니다.</p>
+        <div class="local-keywords">
+            <ul>
+                <li><strong>속초시 조양동</strong> 인테리어</li>
+                <li><strong>속초시 교동</strong> 인테리어</li>
+                <li><strong>속초시 동명동</strong> 인테리어</li>
+                <li><strong>속초시 금호동</strong> 인테리어</li>
+                <li><strong>속초시 청호동</strong> 인테리어</li>
+                <li><strong>속초시 청학동</strong> 인테리어</li>
+                <li><strong>속초시 대포동</strong> 인테리어</li>
+                <li><strong>속초시 노학동</strong> 인테리어</li>
+                <li><strong>속초시 영랑동</strong> 인테리어</li>
+                <li><strong>속초시 설악동</strong> 인테리어</li>
+                <li><strong>속초시 장사동</strong> 인테리어</li>
+                <li><strong>속초시 아바이마을</strong> 리모델링</li>
+                <li><strong>속초 롯데캐슬</strong> 아파트 인테리어</li>
+                <li><strong>속초 힐스테이트</strong> 아파트 인테리어</li>
+                <li><strong>조양동 현대아파트</strong> 리모델링</li>
+                <li><strong>교동 주공아파트</strong> 인테리어</li>
+                <li><strong>속초 금호동 이편한세상</strong> 인테리어</li>
+                <li><strong>속초 자이아파트</strong> 리모델링</li>
+                <li><strong>속초 아이파크</strong> 인테리어</li>
+                <li><strong>속초 KCC 스위첸</strong> 인테리어</li>
+                <li><strong>속초 중앙시장</strong> 상가 인테리어</li>
+                <li><strong>속초 해수욕장</strong> 근처 펜션 인테리어</li>
+                <li><strong>속초시 양양</strong> 인테리어 (인접 지역)</li>
+                <li><strong>속초시 고성</strong> 인테리어 (인접 지역)</li>
+                <li><strong>속초 신축 아파트</strong> 입주 인테리어</li>
+                <li><strong>속초 구옥 주택</strong> 전체 리모델링</li>
+                <li><strong>속초 투룸</strong> 인테리어 <strong>비용</strong></li>
+                <li><strong>속초 오피스텔</strong> 인테리어 <strong>견적</strong></li>
+                <li><strong>속초 인테리어</strong> <strong>가격</strong> <strong>싼곳</strong></li>
+                <li><strong>속초 인테리어</strong> <strong>내돈내산</strong> <strong>후기</strong></li>
+                <li><strong>속초 인테리어</strong> <strong>평균</strong> <strong>금액</strong></li>
+                <li><strong>속초 인테리어</strong> <strong>추천</strong> 업체</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- FAQ 섹션 -->
+    <section id="faq" class="faq">
+        <h2>자주 묻는 질문 (FAQ)</h2>
+        <div class="faq-item">
+            <input type="checkbox" id="q1">
+            <label for="q1"><h3>Q1: 인테리어 <strong>예약</strong> 시 <strong>견적</strong>은 어떻게 진행되나요?</h3></label>
+            <p>A: <strong>예상 비용</strong>을 문의하시면, 현장 방문을 통해 정확한 <strong>견적</strong>을 산출합니다. 현장 방문 시 고객님의 니즈와 예산을 고려한 맞춤형 디자인 및 자재를 추천해 드립니다. 견적은 무료이며, 계약 전까지 추가 비용을 요구하지 않습니다.</p>
+        </div>
+        <div class="faq-item">
+            <input type="checkbox" id="q2">
+            <label for="q2"><h3>Q2: 인테리어 <strong>시공 기간</strong>은 얼마나 걸리나요?</h3></label>
+            <p>A: 시공 기간은 <strong>면적</strong>과 <strong>범위</strong>에 따라 달라집니다. 30평대 아파트 전체 인테리어의 경우 평균 3~4주가 소요되며, 주방이나 욕실 부분 인테리어는 3~5일 정도 소요됩니다. <strong>견적</strong> 상담 시 정확한 일정을 안내해 드립니다.</p>
+        </div>
+        <div class="faq-item">
+            <input type="checkbox" id="q3">
+            <label for="q3"><h3>Q3: <strong>저렴한곳</strong>을 찾는데, <strong>가격</strong>이 싼 곳은 <strong>단점</strong>이 있나요?</h3></label>
+            <p>A: <strong>싼곳</strong>만 고집할 경우, 저가 자재 사용 및 미숙련 인력 투입으로 인해 시공 후 하자가 발생할 위험이 높습니다. 저희는 합리적인 <strong>가격</strong>을 제시하되, 숙련된 기술자와 검증된 자재만을 사용하여 <strong>장점</strong>이 많은 인테리어를 추구합니다. <strong>가격</strong>과 품질 사이의 <strong>차이점</strong>을 명확히 설명해 드립니다.</p>
+        </div>
+        <div class="faq-item">
+            <input type="checkbox" id="q4">
+            <label for="q4"><h3>Q4: <strong>속초 인테리어</strong> 트렌드(2026년)는 무엇인가요?</h3></label>
+            <p>A: 2026년 속초 인테리어 트렌드는 '자연 친화적 디자인'과 '스마트 홈' 기능의 결합입니다. 해안 지역의 특성을 살려 우드톤과 화이트 컬러를 조합하거나, 넉넉한 수납공간을 확보하고 AI 기능을 접목한 스마트 가전을 활용한 인테리어가 인기를 얻고 있습니다.</p>
+        </div>
+    </section>
+
+    <!-- 외부 신뢰도 링크 (SEO 최적화) -->
+    <section>
+        <h2>인테리어 관련 공인 정보 및 신뢰성 확보</h2>
+        <p>인테리어 시공에 앞서 건축법 및 주거 환경 관련 정보를 확인하는 것이 중요합니다. 아래는 인테리어 관련 신뢰성 있는 외부 사이트입니다.</p>
+        <ul>
+            <li><a href="https://namu.wiki/w/%EC%9D%B8%ED%85%8C%EB%A6%AC%EC%96%B4" target="_blank">나무위키 - 인테리어</a>: 인테리어의 정의, 역사, 분류 등 기본 지식 참고</li>
+            <li><a href="http://www.molit.go.kr" target="_blank">국토교통부</a>: 건축법규 및 주택 건설 관련 정책 정보 제공</li>
+            <li><a href="https://www.naverblog.com/sokcho-interior-review" target="_blank">Naver Blog - 속초 인테리어 내돈내산 후기 모음</a>: 실제 고객들의 시공 후기 확인 (가상 링크)</li>
+            <li><a href="https://www.koreabuild.co.kr" target="_blank">코리아빌드 (건축박람회)</a>: 최신 건축 자재 및 인테리어 트렌드 확인</li>
+            <li><a href="https://www.go.kr/sokcho/sokcho" target="_blank">속초시청 공식 웹사이트</a>: 지역 주택 정책 및 인허가 정보 확인</li>
+        </ul>
+    </section>
+
+    <!-- 연락처 및 상담 신청 -->
+    <section id="contact">
+        <h2>무료 상담 및 견적 신청</h2>
+        <p>지금 바로 문의하시면 속초 지역 전문가가 2026년 트렌드를 반영한 맞춤형 인테리어를 제안해 드립니다. <strong>저렴한곳</strong>, <strong>싼곳</strong>, <strong>추천</strong> 등 다양한 키워드로 고민하셨다면 저희에게 맡겨주세요.</p>
+        <p>📞 전화: <a href="tel:033-XXX-XXXX">033-XXX-XXXX</a></p>
+        <p>📍 주소: 강원특별자치도 속초시 XXX로 XX</p>
+        <p>🕒 운영시간: 매일 09:00–18:00 (사전 예약 시 연장 가능)</p>
+        <a href="tel:033-XXX-XXXX" class="cta-btn">지금 바로 무료 상담하기</a>
+
+        <h3>온라인 견적 문의 (상세 입력란)</h3>
+        <p>아래 폼을 작성하시면 24시간 이내에 전문가가 연락드립니다. 최대한 자세한 정보를 입력해 주시면 정확한 <strong>예상 비용</strong>을 안내받으실 수 있습니다.</p>
+        <form action="/submit-quote" method="post">
+            <p><label for="name">이름</label><br><input type="text" id="name" name="name" placeholder="고객님의 성함을 입력해주세요." required></p>
+            <p><label for="phone">연락처</label><br><input type="tel" id="phone" name="phone" placeholder="예: 010-1234-5678" required></p>
+            <p><label for="address">시공 주소 (속초시 상세 주소)</label><br><input type="text" id="address" name="address" placeholder="예: 속초시 조양동 롯데캐슬 101동 101호" required></p>
+            <p><label for="size">시공 면적 (평수)</label><br><input type="text" id="size" name="size" placeholder="예: 32평" required></p>
+            <p><label for="type">시공 유형</label><br>
+                <select id="type" name="type" required>
+                    <option value="">-- 선택 --</option>
+                    <option value="all-apt">아파트 전체 인테리어</option>
+                    <option value="all-villa">빌라/주택 전체 리모델링</option>
+                    <option value="all-oneroom">원룸/투룸 전체 인테리어</option>
+                    <option value="partial-kitchen">부분 인테리어 (주방)</option>
+                    <option value="partial-bath">부분 인테리어 (욕실)</option>
+                    <option value="commercial">상가/사무실 인테리어</option>
+                    <option value="etc">기타</option>
+                </select>
+            </p>
+            <p><label for="budget">예상 예산 범위</label><br><input type="text" id="budget" name="budget" placeholder="예: 2,000만 원 내외" required></p>
+            <p><label for="start_date">희망 시공 시작일</label><br><input type="date" id="start_date" name="start_date" required></p>
+            <p><label for="details">상세 문의 사항 (원하는 디자인, 자재 등)</label><br><textarea id="details" name="details" rows="5" placeholder="원하는 인테리어 스타일(모던, 내추럴 등)과 요청 사항을 자세히 적어주시면 정확한 견적에 도움이 됩니다." required></textarea></p>
+            <button type="submit" class="cta-btn">무료 견적 요청하기</button>
+        </form>
+
+        <!-- 구글맵 임베드 -->
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d10000.0!2d128.5910!3d38.2039!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2z44K444K144K444K144K444K144K444K1!5e0!3m2!1sen!2skr!4v1625412345678" width="100%" height="300" style="border:0; margin-top:20px; border-radius: 8px;" allowfullscreen="" loading="lazy"></iframe>
+    </section>
+
+
+  
